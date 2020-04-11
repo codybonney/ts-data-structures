@@ -2,13 +2,6 @@ import 'jasmine';
 import SinglyLinkedList from '../src/SinglyLinkedList';
 
 describe('SinglyLinkedList', () => {
-    it(`should return support appending a Node`, () => {
-        const list = new SinglyLinkedList();
-        list.append(5);
-        expect(list.head).toBeDefined();
-        expect(list.head && list.head.data).toBe(5);
-    });
-
     it(`should return support appending multiple Nodes`, () => {
         const list = new SinglyLinkedList();
 
