@@ -5,7 +5,7 @@ export default class SinglyLinkedList<T> {
         this.head = null;
     }
 
-    append(data: T) {
+    add(data: T) {
         let node = this.head;
         if (node) {
             while (node.next !== null) {

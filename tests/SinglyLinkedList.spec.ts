@@ -5,9 +5,9 @@ describe('SinglyLinkedList', () => {
     it(`should return support appending multiple Nodes`, () => {
         const list = new SinglyLinkedList();
 
-        list.append(5);
-        list.append(6);
-        list.append(7);
+        list.add(5);
+        list.add(6);
+        list.add(7);
 
         expect(list.head).toBeDefined();
         expect(list.head && list.head.next).toBeDefined();
