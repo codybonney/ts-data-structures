@@ -13,7 +13,7 @@
   "files": [
     "dist/index.js",
     "dist/index.d.ts",
-    "dist/SinglyLinkedList.ts",
+    "dist/SinglyLinkedList.js",
     "dist/SinglyLinkedList.d.ts"
   ],
   "main": "dist/index.js",
