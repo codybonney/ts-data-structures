@@ -11,8 +11,8 @@ describe('SinglyLinkedList', () => {
 
         expect(list.head).toBeDefined();
         expect(list.head && list.head.next).toBeDefined();
-        expect(list.head && list.head.data).toBe(5);
-        expect(list.head && list.head.next && list.head.next.data).toBe(6);
-        expect(list.head && list.head.next && list.head.next.next && list.head.next.next.data).toBe(7);
+        expect(list.head && list.head.value).toBe(5);
+        expect(list.head && list.head.next && list.head.next.value).toBe(6);
+        expect(list.head && list.head.next && list.head.next.next && list.head.next.next.value).toBe(7);
     });
 });

@@ -5,24 +5,24 @@ export default class SinglyLinkedList<T> {
         this.head = null;
     }
 
-    add(data: T) {
+    add(value: T) {
         if (this.head) {
             let node = this.head;
             while (node.next !== null) {
                 node = node.next;
             }
-            node.next = new Node(data);
+            node.next = new Node(value);
         } else {
-            this.head = new Node(data);
+            this.head = new Node(value);
         }
     }
 }
 
 class Node<T> {
     next: Node<T> | null = null;
-    data: T;
+    value: T;
 
     constructor(data: T) {
-        this.data = data;
+        this.value = data;
     }
 }
