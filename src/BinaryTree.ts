@@ -1,23 +1,22 @@
 export default class BinaryTree<T> {
-    head: Node<T> | null;
+    head: Node<T> | null = null;
 
-    constructor(value?: T) {
-        this.head = null;
-        if (value) {
-            this.add(value);
-        }
+    constructor(...values: T[]) {
+        this.add(...values);
     }
 
     /**
      * Add a new Node to the tree
-     * @param value
+     * @param values
      */
-    add(value: T) {
-        if (this.head) {
-            this.head.add(value);
-        } else {
-            this.head = new Node<T>(value);
-        }
+    add = (...values: T[]) => {
+        values.map(value => {
+            if (this.head) {
+                this.head.attach(value);
+            } else {
+                this.head = new Node(value);
+            }
+        });
     }
 }
 
@@ -31,21 +30,21 @@ class Node<T> {
     }
 
     /**
-     * Add a new Node as a child to this Node
+     * Attach a new child Node
      * @param value
      */
-    add(value: T) {
+    attach = (value: T) => {
         if (value < this.value) {
             if (this.left === null) {
-                this.left = new Node<T>(value)
+                this.left = new Node(value);
             } else {
-                this.left.add(value);
+                this.left.attach(value);
             }
         } else {
             if (this.right === null) {
-                this.right = new Node<T>(value);
+                this.right = new Node(value);
             } else {
-                this.right.add(value);
+                this.right.attach(value);
             }
         }
     }

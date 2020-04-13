@@ -14,12 +14,8 @@ describe('BinaryTree', () => {
     });
 
     it(`should support adding nodes to a tree`, () => {
-        const tree = new BinaryTree();
-        tree.add(5);
-        tree.add(8);
-        tree.add(3);
-        tree.add(2);
-        tree.add(9);
+        const tree = new BinaryTree(5, 8, 3, 2, 9);
+
         expect(tree.head).toBeDefined();
         expect(tree.head && tree.head.left).toBeDefined();
         expect(tree.head && tree.head.left && tree.head.left.left).toBeDefined();

@@ -13,6 +13,8 @@
   "files": [
     "dist/index.js",
     "dist/index.d.ts",
+    "dist/BinaryTree.js",
+    "dist/BinaryTree.d.ts",
     "dist/SinglyLinkedList.js",
     "dist/SinglyLinkedList.d.ts"
   ],
