@@ -5,16 +5,14 @@ export default class BinaryTree<T> {
         this.add(...values);
     }
 
-    /**
-     * Add a new Node to the tree
-     * @param values
-     */
     add = (...values: T[]) => {
         values.map(value => {
+            const node = new Node(value);
+
             if (this.head) {
-                this.head.attach(value);
+                this.head.attach(node);
             } else {
-                this.head = new Node(value);
+                this.head = node;
             }
         });
     }
@@ -31,20 +29,20 @@ class Node<T> {
 
     /**
      * Attach a new child Node
-     * @param value
+     * @param node
      */
-    attach = (value: T) => {
-        if (value < this.value) {
+    attach = (node: Node<T>) => {
+        if (node.value < this.value) {
             if (this.left === null) {
-                this.left = new Node(value);
+                this.left = node;
             } else {
-                this.left.attach(value);
+                this.left.attach(node);
             }
         } else {
             if (this.right === null) {
-                this.right = new Node(value);
+                this.right = node;
             } else {
-                this.right.attach(value);
+                this.right.attach(node);
             }
         }
     }
