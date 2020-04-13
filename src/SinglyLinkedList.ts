@@ -1,20 +1,20 @@
 export default class SinglyLinkedList<T> {
-    head: Node<T> | null;
+    head: Node<T> | null = null;
 
-    constructor() {
-        this.head = null;
+    constructor(...values: T[]) {
+        this.add(...values);
     }
 
-    add(value: T) {
-        if (this.head) {
-            let node = this.head;
-            while (node.next !== null) {
-                node = node.next;
+    add = (...values: T[]) => {
+        values.map(value => {
+            const node = new Node(value);
+
+            if (this.head) {
+                this.head.attach(node);
+            } else {
+                this.head = node;
             }
-            node.next = new Node(value);
-        } else {
-            this.head = new Node(value);
-        }
+        });
     }
 }
 
@@ -25,4 +25,12 @@ class Node<T> {
     constructor(data: T) {
         this.value = data;
     }
+
+    attach = (node: Node<T>) => {
+        if (this.next !== null) {
+            this.next.attach(node);
+        } else {
+            this.next = node;
+        }
+   }
 }
