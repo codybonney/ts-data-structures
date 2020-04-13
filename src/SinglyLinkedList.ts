@@ -1,5 +1,6 @@
 export default class SinglyLinkedList<T> {
     head: Node<T> | null = null;
+    length: number = 0; // nodes in list
 
     constructor(...values: T[]) {
         this.add(...values);
@@ -14,6 +15,7 @@ export default class SinglyLinkedList<T> {
             } else {
                 this.head = node;
             }
+            this.length++;
         });
     }
 }

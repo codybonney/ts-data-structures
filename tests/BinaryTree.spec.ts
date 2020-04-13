@@ -5,6 +5,7 @@ describe('BinaryTree', () => {
     it(`should support creating an empty tree`, () => {
         const tree = new BinaryTree();
         expect(tree.head).toBeNull();
+        expect(tree.length).toEqual(0);
     });
 
     it(`should support creating a tree with an initial node`, () => {
@@ -25,5 +26,15 @@ describe('BinaryTree', () => {
         expect(tree.head && tree.head.left && tree.head.left.left && tree.head.left.left.value).toEqual(2);
         expect(tree.head && tree.head.right && tree.head.right.value).toEqual(8);
         expect(tree.head && tree.head.right && tree.head.right.right && tree.head.right.right.value).toEqual(9);
+    });
+
+    it(`should track length`, () => {
+        const tree = new BinaryTree();
+
+        expect(tree.length).toBe(0);
+        tree.add(1);
+        expect(tree.length).toBe(1);
+        tree.add(2, 3, 4);
+        expect(tree.length).toBe(4);
     });
 });

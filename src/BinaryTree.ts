@@ -1,5 +1,6 @@
 export default class BinaryTree<T> {
     head: Node<T> | null = null;
+    length: number = 0; // nodes in tree
 
     constructor(...values: T[]) {
         this.add(...values);
@@ -14,6 +15,7 @@ export default class BinaryTree<T> {
             } else {
                 this.head = node;
             }
+            this.length++;
         });
     }
 }
