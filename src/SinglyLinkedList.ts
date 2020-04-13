@@ -6,8 +6,8 @@ export default class SinglyLinkedList<T> {
     }
 
     add(data: T) {
-        let node = this.head;
-        if (node) {
+        if (this.head) {
+            let node = this.head;
             while (node.next !== null) {
                 node = node.next;
             }
