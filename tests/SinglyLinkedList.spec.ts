@@ -22,12 +22,29 @@ describe('SinglyLinkedList', () => {
         expect(list.length).toBe(4);
     });
 
-    it(`should iterate over nodes using forEach`, () => {
-        const list = new SinglyLinkedList(1, 2 ,3);
-        let results: number[] = [];
-        list.forEach(value => {
-            results.push(value);
+    describe(`forEach`, () => {
+        it(`should iterate over nodes`, () => {
+            const list = new SinglyLinkedList(1, 2 ,3);
+            let results: number[] = [];
+            list.forEach(value => {
+                results.push(value);
+            });
+            expect(results).toEqual([1, 2, 3]);
         });
-        expect(results).toEqual([1, 2, 3]);
     });
+
+    describe(`find`, () => {
+        it(`should return an element if found`, () => {
+            const list = new SinglyLinkedList(1, 2, 3);
+            const result = list.find(value => value === 2);
+            expect(result).toBe(2);
+        });
+
+        it(`should return undefined if not found`, () => {
+            const list = new SinglyLinkedList();
+            const result = list.find(value => value === 2);
+            expect(result).toBeUndefined();
+        });
+    });
+
 });

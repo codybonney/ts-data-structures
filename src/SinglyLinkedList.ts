@@ -25,7 +25,21 @@ export default class SinglyLinkedList<T> {
             callback(node.value);
             node = node.next;
         }
-    }
+    };
+
+    find = (test: (value: T) => boolean) => {
+        let node = this.head;
+        let result: T | undefined;
+
+        while (node) {
+            if (test(node.value)) {
+                result = node.value;
+                break;
+            }
+            node = node.next;
+        }
+        return result;
+    };
 }
 
 class Node<T> {
