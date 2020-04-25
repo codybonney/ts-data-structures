@@ -17,6 +17,14 @@ export default class SinglyLinkedList<T> {
             }
             this.length++;
         });
+    };
+
+    forEach = (callback: (value: T) => void) => {
+        let node = this.head;
+        while (node) {
+            callback(node.value);
+            node = node.next;
+        }
     }
 }
 

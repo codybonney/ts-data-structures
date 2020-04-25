@@ -21,4 +21,13 @@ describe('SinglyLinkedList', () => {
         list.add(2, 3, 4);
         expect(list.length).toBe(4);
     });
+
+    it(`should iterate over nodes using forEach`, () => {
+        const list = new SinglyLinkedList(1, 2 ,3);
+        let results: number[] = [];
+        list.forEach(value => {
+            results.push(value);
+        });
+        expect(results).toEqual([1, 2, 3]);
+    });
 });
