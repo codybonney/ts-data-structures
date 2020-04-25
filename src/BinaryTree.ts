@@ -11,13 +11,13 @@ export default class BinaryTree<T> {
             const node = new Node(value);
 
             if (this.head) {
-                this.head.attach(node);
+                attach(this.head, node);
             } else {
                 this.head = node;
             }
             this.length++;
         });
-    }
+    };
 }
 
 class Node<T> {
@@ -28,24 +28,25 @@ class Node<T> {
     constructor(value: T) {
         this.value = value;
     }
+}
 
-    /**
-     * Attach a new child Node
-     * @param node
-     */
-    attach = (node: Node<T>) => {
-        if (node.value < this.value) {
-            if (this.left === null) {
-                this.left = node;
-            } else {
-                this.left.attach(node);
-            }
+/**
+ * Attach Node b to a leaf of Node a
+ * @param a
+ * @param b
+ */
+const attach = <T>(a: Node<T>, b: Node<T>) => {
+    if (b.value < a.value) {
+        if (a.left === null) {
+            a.left = b;
         } else {
-            if (this.right === null) {
-                this.right = node;
-            } else {
-                this.right.attach(node);
-            }
+            attach(a.left, b)
+        }
+    } else {
+        if (a.right === null) {
+            a.right = b;
+        } else {
+            attach(a.right, b);
         }
     }
-}
+};
