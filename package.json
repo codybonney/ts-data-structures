@@ -1,7 +1,7 @@
 {
   "name": "ts-data-structures",
   "description": "A collection of common data structures written in TypeScript",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/codybonney/ts-data-structures",
   "author": "Cody Bonney (https://github.com/codybonney)",
   "contributors": [],
@@ -15,6 +15,8 @@
     "dist/index.d.ts",
     "dist/BinaryTree.js",
     "dist/BinaryTree.d.ts",
+    "dist/HashTable.js",
+    "dist/HashTable.d.ts",
     "dist/SinglyLinkedList.js",
     "dist/SinglyLinkedList.d.ts"
   ],
