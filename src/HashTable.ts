@@ -52,6 +52,14 @@ export default class HashTable<K, V> {
         this.entries = table.entries;
         delete table.buckets; // allow table to get garbage collected
     };
+
+    find = (key: K): V | void => {
+        const index = this.hashValue(key);
+        const existing = this.buckets[index].find(entry => entry.key === key);
+        if (existing) {
+            return existing.value;
+        }
+    };
 }
 
 class Entry<K, V> {

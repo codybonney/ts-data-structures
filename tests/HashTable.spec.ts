@@ -29,8 +29,21 @@ describe('HashTable', () => {
             table.add('a', 1);
             table.add('a', 2);
             expect(table.entries).toEqual(1);
-            // todo find the entry and verify its value
-        })
-    })
+            expect(table.find('a')).toEqual(2);
+        });
+    });
 
+    describe(`find`, () => {
+        it(`should return a value if an entry exists`, () => {
+            const table = new HashTable(4);
+            table.add('a', 1);
+            expect(table.find('a')).toEqual(1);
+        });
+
+        it(`should return undefined if an entry does not exist`, () => {
+            const table = new HashTable(4);
+            table.add('a', 1);
+            expect(table.find('b')).toBeUndefined();
+        });
+    });
 });
