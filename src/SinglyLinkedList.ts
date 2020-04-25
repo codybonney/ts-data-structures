@@ -11,7 +11,7 @@ export default class SinglyLinkedList<T> {
             const node = new Node(value);
 
             if (this.head) {
-                this.head.attach(node);
+                attach(this.head, node);
             } else {
                 this.head = node;
             }
@@ -27,12 +27,17 @@ class Node<T> {
     constructor(data: T) {
         this.value = data;
     }
-
-    attach = (node: Node<T>) => {
-        if (this.next !== null) {
-            this.next.attach(node);
-        } else {
-            this.next = node;
-        }
-   }
 }
+
+/**
+ * Attach Node b to a leaf of Node a
+ * @param a
+ * @param b
+ */
+const attach = <T>(a: Node<T>, b: Node<T>) => {
+    if (a.next !== null) {
+        attach(a.next, b);
+    } else {
+        a.next = b;
+    }
+};
