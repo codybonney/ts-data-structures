@@ -27,7 +27,7 @@ export default class HashTable<K, V> {
 
     add = (key: K, value: V) => {
         if (this.entries + 1 > this.cutoff) {
-            this.resize();
+            this.resize(this.length * 2);
         }
 
         const index = this.hashValue(key);
@@ -41,8 +41,8 @@ export default class HashTable<K, V> {
         }
     };
 
-    resize = () => {
-        const table = new HashTable<K, V>(this.length * 2);
+    resize = (size: number) => {
+        const table = new HashTable<K, V>(size);
         this.buckets.forEach(bucket => {
             bucket.forEach(entry => {
                 table.add(entry.key, entry.value);
