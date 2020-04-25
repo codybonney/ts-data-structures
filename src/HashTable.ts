@@ -21,18 +21,22 @@ export default class HashTable<K, V> {
         return this.length * 0.75;
     }
 
+    hashValue = (key: K): number => {
+        return Math.abs(HashCode(key) % this.length);
+    };
+
     add = (key: K, value: V) => {
         if (this.entries + 1 > this.cutoff) {
             this.resize();
         }
 
-        const hashValue = Math.abs(HashCode(key) % this.length);
-        const existing = this.buckets[hashValue].find(entry => entry.key === key);
+        const index = this.hashValue(key);
+        const existing = this.buckets[index].find(entry => entry.key === key);
 
         if (existing) {
             existing.value = value;
         } else {
-            this.buckets[hashValue].add(new Entry(key, value));
+            this.buckets[index].add(new Entry(key, value));
             this.entries++;
         }
     };
@@ -47,7 +51,7 @@ export default class HashTable<K, V> {
         this.buckets = table.buckets;
         this.entries = table.entries;
         delete table.buckets; // allow table to get garbage collected
-    }
+    };
 }
 
 class Entry<K, V> {

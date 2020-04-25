@@ -8,6 +8,6 @@
 A collection of common data structures written in TypeScript
 
 ### Installation:
-```
+```bash
 npm install ts-data-structures
 ```
