@@ -11,3 +11,27 @@ A collection of common data structures written in TypeScript
 ```bash
 npm install ts-data-structures
 ```
+
+#### HashTable
+
+##### create
+
+```javascript
+import { HashTable } from 'ts-data-structures'
+
+const table = new HashTable<string, number>();
+```
+##### size
+```javascript
+table.size // 16
+```
+##### add(key, value)
+```javascript
+table.add('foo', 42)
+table.add('bar', 8)
+```
+##### find(key)
+```javascript
+table.find('foo') // bar
+table.find('zap') // undefined
+```

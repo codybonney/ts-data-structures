@@ -38,9 +38,9 @@ export default class HashTable<K, V> {
             this.resize(this.size * 2);
         }
 
-        const existingEntry = this.findEntry(key);
-        if (existingEntry) {
-            existingEntry.value = value;
+        const entry = this.findEntry(key);
+        if (entry) {
+            entry.value = value;
         } else {
             this.findBucket(key).add(new Entry(key, value));
             this.entries++;
@@ -96,10 +96,8 @@ export default class HashTable<K, V> {
      * @param key
      */
     findEntry = (key: K): Entry<K, V> | void => {
-        const existing = this.findBucket(key).find(entry => entry.key === key);
-        if (existing) {
-            return existing;
-        }
+        const bucket = this.findBucket(key);
+        return bucket.find(entry => entry.key === key);
     };
 }
 
