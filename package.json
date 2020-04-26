@@ -1,7 +1,7 @@
 {
   "name": "ts-data-structures",
   "description": "A collection of common data structures written in TypeScript",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "homepage": "https://github.com/codybonney/ts-data-structures",
   "author": "Cody Bonney (https://github.com/codybonney)",
   "contributors": [],
