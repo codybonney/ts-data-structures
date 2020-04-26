@@ -13,37 +13,43 @@ npm install ts-data-structures
 ```
 
 #### HashTable<Key, Value>
-
+Creates a hash table of key and value pairs. Defaults to a size of 16 buckets.
+Each bucket represents a Singly Linked List of entries.
 ```javascript
 import { HashTable } from 'ts-data-structures'
 
 // create a HashTable that takes keys of type string and values of type number
 const table = new HashTable<string, number>();
+
+// create a HashTable that has a size of 64 buckets
+const biggerTable = new HashTable(64);
 ```
 #### HashTable.size
+Get the number of buckets in the table.
 ```javascript
 table.size // 16
 ```
 #### HashTable.entries
+Get the number of entries in the table.
 ```javascript
 table.entries // 0
 ```
 #### HashTable.add(key, value)
-Add a new key and value pair to the table.
-The table will be resized if it has too many entries.
-If a given key already exists, it's value will be updated.
+Add a new entry to the table.
+The table will be resized if it contains too many entries.
+If an entry with the given key already exists, it's value will be updated.
 ```javascript
 table.add('foo', 42)
 table.add('bar', 8)
 ```
 #### HashTable.find(key)
-Find the value associated with a given key
+Find the value associated with a given key.
 ```javascript
 table.find('foo') // 42
 table.find('zap') // undefined
 ```
 #### HashTable.resize(size)
-Resize the table to a given size
+Resize the table to a given number of buckets.
 ```javascript
 table.resize(32)
 table.size // 32

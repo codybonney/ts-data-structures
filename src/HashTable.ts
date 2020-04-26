@@ -14,23 +14,23 @@ export default class HashTable<K, V> {
     }
 
     /**
-     * Get the size of the table
+     * Get the number of buckets in the table.
      */
     get size(): number {
         return this.buckets.length;
     }
 
     /**
-     * Get the number of entries required before resizing the table
+     * Get the number of entries required before resizing the table.
      */
     get cutoff(): number {
         return this.size * 0.75;
     }
 
     /**
-     * Add a new key and value pare to the table
-     * The table will be resized if it has too many entries
-     * If a given key already exists, it's value will be updated
+     * Add a new entry to the table.
+     * The table will be resized if it contains too many entries.
+     * If an entry with the given key already exists, it's value will be updated.
      * @param key
      * @param value
      */
@@ -49,7 +49,7 @@ export default class HashTable<K, V> {
     };
 
     /**
-     * Resize the table to a given size
+     * Resize the table to a given number of buckets.
      * @param size
      */
     resize = (size: number) => {
@@ -65,7 +65,7 @@ export default class HashTable<K, V> {
     };
 
     /**
-     * Find the value associated with a given key
+     * Find the value associated with a given key.
      * @param key
      */
     find = (key: K): V | void => {
@@ -76,7 +76,7 @@ export default class HashTable<K, V> {
     };
 
     /**
-     * Generate a bucket array index for a given key
+     * Generate a bucket array index for a given key.
      * @param key
      */
     findIndex = (key: K): number => {
@@ -84,7 +84,7 @@ export default class HashTable<K, V> {
     };
 
     /**
-     * Find the Bucket associated with a given key
+     * Find the Bucket associated with a given key.
      * @param key
      */
     findBucket = (key: K): Bucket<K, V> => {
@@ -93,7 +93,7 @@ export default class HashTable<K, V> {
     };
 
     /**
-     * Find the Entry associated with a given key
+     * Find the Entry associated with a given key.
      * @param key
      */
     findEntry = (key: K): Entry<K, V> | void => {

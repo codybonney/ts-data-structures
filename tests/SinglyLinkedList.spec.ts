@@ -34,7 +34,7 @@ describe('SinglyLinkedList', () => {
     });
 
     describe(`find`, () => {
-        it(`should return an element if found`, () => {
+        it(`should return a value if found`, () => {
             const list = new SinglyLinkedList(1, 2, 3);
             const result = list.find(value => value === 2);
             expect(result).toBe(2);
@@ -47,4 +47,72 @@ describe('SinglyLinkedList', () => {
         });
     });
 
+
+    describe(`remove`, () => {
+        it(`should remove a value that is not the head or tail`, () => {
+            const list = new SinglyLinkedList(1, 2, 3);
+            list.remove(2);
+            expect(list.toArray()).toEqual([1, 3]);
+            expect(list.head && list.head.value).toBe(1);
+            expect(list.tail && list.tail.value).toBe(3);
+        });
+
+        it(`should remove a value that is the head`, () => {
+            const list = new SinglyLinkedList(1, 2, 3);
+            list.remove(1);
+            expect(list.toArray()).toEqual([2, 3]);
+            expect(list.head && list.head.value).toBe(2);
+            expect(list.tail && list.tail.value).toBe(3);
+        });
+
+        it(`should remove a value that is the tail`, () => {
+            const list = new SinglyLinkedList(1, 2, 3);
+            list.remove(3);
+            expect(list.toArray()).toEqual([1, 2]);
+            expect(list.head && list.head.value).toBe(1);
+            expect(list.tail && list.tail.value).toBe(2);
+        });
+
+        it(`should remove a value belonging to the only node in the list`, () => {
+            const list = new SinglyLinkedList(1);
+            list.remove(1);
+            expect(list.toArray()).toEqual([]);
+            expect(list.head).toBe(null);
+            expect(list.tail).toBe(null);
+        });
+
+        it(`should remove all the values in a list`, () => {
+            const list = new SinglyLinkedList(1, 1, 1);
+            list.remove(1);
+            expect(list.toArray()).toEqual([]);
+            expect(list.head).toBe(null);
+            expect(list.tail).toBe(null);
+        });
+
+        it(`should remove all the values at the beginning of a list`, () => {
+            const list = new SinglyLinkedList(1, 1, 1, 2, 3);
+            list.remove(1);
+            expect(list.toArray()).toEqual([2, 3]);
+            expect(list.head && list.head.value).toBe(2);
+            expect(list.tail && list.tail.value).toBe(3);
+        });
+
+        it(`should remove all the values at the end of a list`, () => {
+            const list = new SinglyLinkedList(1, 2, 3, 3, 3, 3, 3, 3);
+            list.remove(3);
+            expect(list.toArray()).toEqual([1, 2]);
+            expect(list.head && list.head.value).toBe(1);
+            expect(list.tail && list.tail.value).toBe(2);
+        });
+
+        it(`should remove multiple values if they exist in the list`, () => {
+            console.log('');
+            const list = new SinglyLinkedList(1, 2, 2, 2, 2, 2, 3);
+            list.remove(2);
+            expect(list.toArray()).toEqual([1, 3]);
+            expect(list.head && list.head.value).toBe(1);
+            expect(list.tail && list.tail.value).toBe(3);
+            expect(list.length).toEqual(2);
+        });
+    });
 });
