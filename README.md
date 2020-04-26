@@ -14,24 +14,36 @@ npm install ts-data-structures
 
 #### HashTable
 
-##### create
-
 ```javascript
 import { HashTable } from 'ts-data-structures'
 
 const table = new HashTable<string, number>();
 ```
-##### size
+##### HashTable.size
 ```javascript
 table.size // 16
 ```
-##### add(key, value)
+##### HashTable.entries
+```javascript
+table.entries // 0
+```
+##### HashTable.add(key, value)
+Add a new key and value pair to the table.
+The table will be resized if it has too many entries.
+If a given key already exists, it's value will be updated.
 ```javascript
 table.add('foo', 42)
 table.add('bar', 8)
 ```
-##### find(key)
+##### HashTable.find(key)
+Find the value associated with a given key
 ```javascript
 table.find('foo') // bar
 table.find('zap') // undefined
+```
+##### HashTable.resize(size)
+Resize the table to a given size
+```javascript
+table.resize(32)
+table.size // 32
 ```

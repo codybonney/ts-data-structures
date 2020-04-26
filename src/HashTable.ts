@@ -28,7 +28,8 @@ export default class HashTable<K, V> {
     }
 
     /**
-     * Add a new key and value to the table.
+     * Add a new key and value pare to the table
+     * The table will be resized if it has too many entries
      * If a given key already exists, it's value will be updated
      * @param key
      * @param value
