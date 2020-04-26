@@ -54,3 +54,10 @@ Resize the table to a given number of buckets.
 table.resize(32)
 table.size // 32
 ```
+#### HashTable.remove(key)
+Remove an entry from the table
+```javascript
+table.entries // 2
+table.remove('foo')
+table.entries // 1
+```

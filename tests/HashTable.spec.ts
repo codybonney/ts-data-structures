@@ -46,4 +46,16 @@ describe('HashTable', () => {
             expect(table.find('b')).toBeUndefined();
         });
     });
+
+    describe(`remove`, () => {
+        it(`should remove an entry from the table if it exists`, () => {
+            const table = new HashTable();
+            table.add('a', 1);
+            expect(table.find('a')).toEqual(1);
+            expect(table.entries).toEqual(1);
+            table.remove('a');
+            expect(table.find('a')).toEqual(undefined);
+            expect(table.entries).toEqual(0);
+        });
+    });
 });

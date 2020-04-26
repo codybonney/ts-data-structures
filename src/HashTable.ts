@@ -49,6 +49,19 @@ export default class HashTable<K, V> {
     };
 
     /**
+     * Remove an entry from the table
+     * @param key
+     */
+    remove = (key: K) => {
+        const bucket = this.findBucket(key);
+        const entry = this.findEntry(key);
+        if (entry) {
+            bucket.remove(entry);
+            this.entries--;
+        }
+    };
+
+    /**
      * Resize the table to a given number of buckets.
      * @param size
      */
