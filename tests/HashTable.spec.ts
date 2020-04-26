@@ -19,9 +19,9 @@ describe('HashTable', () => {
             table.add('a', 1);
             table.add('b', 2);
             table.add('c', 3);
-            expect(table.length).toEqual(4);
+            expect(table.size).toEqual(4);
             table.add('d', 4);
-            expect(table.length).toEqual(8);
+            expect(table.size).toEqual(8);
         });
 
         it(`should update an existing entry if it's key already exists`, () => {
