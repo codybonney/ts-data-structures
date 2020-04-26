@@ -28,14 +28,6 @@ export default class HashTable<K, V> {
     }
 
     /**
-     * Generate a buckets array index for a given key
-     * @param key
-     */
-    accessIndex = (key: K): number => {
-        return Math.abs(HashCode(key) % this.size);
-    };
-
-    /**
      * Add a new key and value to the table.
      * If a given key already exists, it's value will be updated
      * @param key
@@ -46,13 +38,11 @@ export default class HashTable<K, V> {
             this.resize(this.size * 2);
         }
 
-        const index = this.accessIndex(key);
-        const existing = this.buckets[index].find(entry => entry.key === key);
-
-        if (existing) {
-            existing.value = value;
+        const existingEntry = this.findEntry(key);
+        if (existingEntry) {
+            existingEntry.value = value;
         } else {
-            this.buckets[index].add(new Entry(key, value));
+            this.findBucket(key).add(new Entry(key, value));
             this.entries++;
         }
     };
@@ -78,10 +68,37 @@ export default class HashTable<K, V> {
      * @param key
      */
     find = (key: K): V | void => {
-        const index = this.accessIndex(key);
-        const existing = this.buckets[index].find(entry => entry.key === key);
+        const entry = this.findEntry(key);
+        if (entry) {
+            return entry.value;
+        }
+    };
+
+    /**
+     * Generate a bucket array index for a given key
+     * @param key
+     */
+    findIndex = (key: K): number => {
+        return Math.abs(HashCode(key) % this.size);
+    };
+
+    /**
+     * Find the Bucket associated with a given key
+     * @param key
+     */
+    findBucket = (key: K): Bucket<K, V> => {
+        const index = this.findIndex(key);
+        return this.buckets[index];
+    };
+
+    /**
+     * Find the Entry associated with a given key
+     * @param key
+     */
+    findEntry = (key: K): Entry<K, V> | void => {
+        const existing = this.findBucket(key).find(entry => entry.key === key);
         if (existing) {
-            return existing.value;
+            return existing;
         }
     };
 }
