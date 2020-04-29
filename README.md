@@ -7,8 +7,8 @@
 ### Description:
 A collection of common data structures written in TypeScript
 
-- [Hash Table](#hashtable)
-- [Singly Linked List](#singlylinkedlist)
+- [Hash Table](#hash-table)
+- [Singly Linked List](#singly-linked-list)
 
 ### Installation:
 ```bash
