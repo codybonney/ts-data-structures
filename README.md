@@ -1,4 +1,4 @@
-## ts-data-structures
+# ts-data-structures
 
 [![Build Status](https://travis-ci.com/codybonney/ts-data-structures.svg?branch=master)](https://travis-ci.com/codybonney/ts-data-structures)
 [![Coverage Status](https://coveralls.io/repos/github/codybonney/ts-data-structures/badge.svg?branch=master)](https://coveralls.io/github/codybonney/ts-data-structures?branch=master)
@@ -7,11 +7,15 @@
 ### Description:
 A collection of common data structures written in TypeScript
 
+- [Hash Table](#hashtable)
+- [Singly Linked List](#singlylinkedlist)
+
 ### Installation:
 ```bash
 npm install ts-data-structures
 ```
 
+## Hash Table
 #### HashTable<Key, Value>
 Creates a hash table of key and value pairs. Defaults to a size of 16 buckets.
 Each bucket represents a Singly Linked List of entries.
@@ -62,7 +66,8 @@ table.remove('foo')
 table.entries // 1
 ```
 
-#### SinglyLinkedList<Value>
+## Singly Linked List
+#### SinglyLinkedList\<Value>
 Creates a Singly Linked List of values.
 ```javascript
 import { SinglyLinkedList } from 'ts-data-structures'
@@ -72,5 +77,17 @@ const list = new SinglyLinkedList<number>();
 
 // create a Singly Linked List with three initial nodes
 const populatedList = new SinglyLinkedList(1, 2, 3);
+```
 
+#### SinglyLinkedList.add(...values)
+Add new entries to the singly linked list
+```javascript
+list.add(1, 2, 3)
+list.toArray() // [1, 2, 3]
+```
+#### SinglyLinkedList.remove(...values)
+Remove entries from the singly linked list
+```javascript
+list.remove(2, 3)
+list.toArray() // [1]
 ```
