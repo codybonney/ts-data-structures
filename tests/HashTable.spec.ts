@@ -57,5 +57,12 @@ describe('HashTable', () => {
             expect(table.find('a')).toEqual(undefined);
             expect(table.entries).toEqual(0);
         });
+
+        it(`should not remove a value if one does not exists`, () => {
+            const table = new HashTable();
+            table.add('foo', 1);
+            table.remove('bar');
+            expect(table.entries).toEqual(1);
+        });
     });
 });

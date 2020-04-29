@@ -61,3 +61,16 @@ table.entries // 2
 table.remove('foo')
 table.entries // 1
 ```
+
+#### SinglyLinkedList<Value>
+Creates a Singly Linked List of values.
+```javascript
+import { SinglyLinkedList } from 'ts-data-structures'
+
+// create a Singly Linked List values of type number
+const list = new SinglyLinkedList<number>();
+
+// create a Singly Linked List with three initial nodes
+const populatedList = new SinglyLinkedList(1, 2, 3);
+
+```
